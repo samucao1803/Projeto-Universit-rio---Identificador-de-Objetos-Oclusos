@@ -24,9 +24,9 @@ int main() {
     while (std::cin.getline(linha, 256)) {
         if (linha[0] == '\0') continue;
         if (linha[0] == 'O') {
-            int id; double x, y, largura;
-            sscanf(linha, "O %d %lf %lf %lf", &id, &x, &y, &largura);
-            Objs[n_Objs++] = Obj(id, x, y, largura);
+            int id; double x, y, width;
+            sscanf(linha, "O %d %lf %lf %lf", &id, &x, &y, &width);
+            Objs[n_Objs++] = Obj(id, x, y, width);
         }
         else if (linha[0] == 'M') {
             Move m;
