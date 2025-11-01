@@ -1,2 +1,4 @@
-# Projeto-Universit-rio---Identificador-de-Objetos-Oclusos
-Esse projeto foi referente a um trabalho prático da disciplina de Estrutura de Dados da UFMG, a ideia principal é criar um algoritmo que mostre só os objetos que realmente aparecem para quem está vendo a cena, ignorando aqueles que ficam totalmente ou parcialmente escondidos atrás de outros
+# Projeto Universitario da UFMG --- Identificador de Objetos Oclusos
+Esse projeto foi referente a um trabalho prático da disciplina de Estrutura de Dados da UFMG, este fala sobre o desafio de melhorar a forma como cenas são renderizadas em ambientes de computação na empresa “Jolambs”. A ideia principal é criar um algoritmo que mostre só os objetos que realmente aparecem para quem está vendo a cena, ignorandoaqueles que ficam totalmente ou parcialmente escondidos atrás de outros. Isso ajuda a deixar o processo mais rápido e com menos gasto de recursos da máquina.
+
+Pra chegar nesse objetivo, o trabalho propõe fazer uma solução em C++, usando a construção de alguns Tipos Abstratos de Dados (TADs) que vão ser pensados especificamente pra isso. Além de implementar essas estruturas, também vai ser feita uma análise prática, comparando o desempenho de diferentes formas de ordenação e maneiras de gerar as cenas
