@@ -1,6 +1,5 @@
-#include "../Include/Algoritimo.hpp"
+#include "../include/Algoritimo.hpp"
 ///////////////////////////////////////////PRIMEIRA FUNÇÕ PRINCIAL///////////////////////////////////
-
 //Arvore de pesquisa binaria
 int bisearch(interval arr[], int n, double valor) {
     int left = 0, right = n - 1;
@@ -58,7 +57,7 @@ void addinterval(interval coverd[], int& n_coverd, double ini, double end) {
         pos_atual--; 
     }
 
-    // Tenta fundir com os vizinhos da DIREITA 
+    // Tenta fundir com os vizinhos da direita 
     while (pos_atual < n_coverd - 1 && coverd[pos_atual].end + tolerance >= coverd[pos_atual + 1].ini) {
         // Expande o intervalo 
         coverd[pos_atual].end = fmax(coverd[pos_atual].end, coverd[pos_atual + 1].end);
@@ -333,3 +332,54 @@ void hiddenscene(Obj* Objs, int num_Objs, Scene* Scene) {
     // Inicia recursão
     processrecur(Objs, num_Objs, Scene, x_min, x_max, 0);
 }
+
+
+// Função para imprimir segmentos
+void imprimirSegmentos(Scene& cena, Segment segmentos[], int n) {
+    std::cout << std::fixed << std::setprecision(2);
+    for (int i = 0; i < n; ++i) {
+        Segment& seg = segmentos[i];
+        std::cout << "S " << cena.gettime() << " " << seg.id << " " 
+                  << seg.begin << " " << seg.end << "\n";
+    }
+}
+
+// Função auxiliar para trocar dois Segmentos de lugar.
+void swap_segments(Segment& a, Segment& b) {
+    Segment temp = a;
+    a = b;
+    b = temp;
+};
+
+
+//partição do quick sort de segmentos
+int partition_segments(Segment arr[], int low, int high) {
+    // Escolhe o último elemento como pivô
+    int pivot_id = arr[high].id; 
+    
+    // Índice do menor elemento
+    int i = (low - 1); 
+
+    for (int j = low; j <= high - 1; j++) {
+        // Se o elemento atual for menor que o pivô
+        if (arr[j].id < pivot_id) {
+            i++; 
+            swap_segments(arr[i], arr[j]);
+        }
+    }
+    // Coloca o pivô no lugar certo
+    swap_segments(arr[i + 1], arr[high]);
+    return (i + 1);
+};
+
+//quick sport de segmentos
+void quicksort_segments(Segment arr[], int low, int high) {
+    if (low < high) {
+        // chama a partição
+        int x = partition_segments(arr, low, high);
+
+        // Ordena antes e depois da partição
+        quicksort_segments(arr, low, x - 1);
+        quicksort_segments(arr, x + 1, high);
+    }
+};
